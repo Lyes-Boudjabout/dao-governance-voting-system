@@ -83,30 +83,23 @@ contract MyGovernor is
         return super._executor();
     }
 
-    function supportsInterface(bytes4 interfaceId)
-        public
-        view
-        override(Governor)
-        returns (bool)
-    {
+    function supportsInterface(bytes4 interfaceId) public view override(Governor) returns (bool) {
         return super.supportsInterface(interfaceId);
     }
 
     function _executeOperations(
-        uint256 /* proposalId */,
+        uint256, /* proposalId */
         address[] memory targets,
         uint256[] memory values,
         bytes[] memory calldatas,
         bytes32 /*descriptionHash*/
-    ) internal override(Governor, GovernorTimelockControl) {
-
-    }
+    ) internal override(Governor, GovernorTimelockControl) {}
 
     function _queueOperations(
-        uint256 /*proposalId*/,
-        address[] memory /*targets*/,
-        uint256[] memory /*values*/,
-        bytes[] memory /*calldatas*/,
+        uint256, /*proposalId*/
+        address[] memory, /*targets*/
+        uint256[] memory, /*values*/
+        bytes[] memory, /*calldatas*/
         bytes32 /*descriptionHash*/
     ) internal pure override(Governor, GovernorTimelockControl) returns (uint48) {
         return 1;
@@ -116,12 +109,11 @@ contract MyGovernor is
         return false;
     }
 
-    function queue(
-        address[] memory targets,
-        uint256[] memory values,
-        bytes[] memory calldatas,
-        bytes32 descriptionHash
-    ) public override returns (uint256) {
+    function queue(address[] memory targets, uint256[] memory values, bytes[] memory calldatas, bytes32 descriptionHash)
+        public
+        override
+        returns (uint256)
+    {
         return super.queue(targets, values, calldatas, descriptionHash);
     }
 }
